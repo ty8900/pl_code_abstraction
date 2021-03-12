@@ -1,0 +1,37 @@
+# mvc with efficientNet-b0
+# multi-label classification with ASL loss
+templates: []
+dataset_name: mvc
+force_update: false
+dataset_path: ./datasets
+img_preprocessing: false
+
+datamodule_name: mvc
+train_batch_size: 32
+val_batch_size: 32
+test_batch_size: 32
+
+model_name: mvc
+optimizer: adam
+lr: 0.0001
+weight_decay: 0.001
+step_size: 7
+gamma: 0.1
+
+network_name: efficientnet-b0
+hidden_size: 512
+num_output: 264
+loss_type: asl
+
+trainer_name: mvc
+train_from_ckpt: False
+pretrained_model_path: null
+gpus: -1
+max_epochs: 20
+bar_refresh_rate: 100
+
+# special for asl loss.
+g_pos: 1
+g_neg: 2
+margin: 0.05
+eps: 1e-6

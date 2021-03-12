@@ -1,0 +1,37 @@
+# clothing1m with resnet50
+# noisy-label training with ELR.
+# 아직 elr target 확률 가져오는 것 미구현. 학습 이어가기는 안됨.
+templates: []
+dataset_name: clothing1m
+force_update: false
+dataset_path: ./datasets
+img_preprocessing: false
+
+datamodule_name: clothing1m
+train_batch_size: 32
+val_batch_size: 32
+test_batch_size: 32
+
+model_name: clothing1m
+optimizer: sgd
+lr: 0.0002
+weight_decay: 0.001
+step_size: 7
+gamma: 0.1
+
+network_name: resnet50
+hidden_size: 512
+num_output: 14
+loss_type: elr
+
+trainer_name: clothing1m
+train_from_ckpt: False
+pretrained_model_path: "./lightning_logs/version_104/checkpoints/epoch=2-step=93749.ckpt"
+gpus: -1
+max_epochs: 15
+bar_refresh_rate: 100
+
+# special for elr loss.
+dataset_size: 1000000
+lamb: 3
+beta: 0.9
