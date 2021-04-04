@@ -149,7 +149,7 @@ class StatRecorder:
             # (4) Multi-class 데이터. (한 label 종류)
             # 중요: 반드시 Classes 라는 이름의 column 필요. 이 기준으로 분석하기 때문.
             elif cur_type == 'Multi-class':
-                if 'Classes' not in df.keys():
+                if 'Classes' not in self.df.keys():
                     print("Multi-class exception: there is no Classes column.")
                     raise NameError
                 cs = self.df['Classes'].value_counts()
